@@ -1,9 +1,7 @@
 from config import token
-from aiogram import F, Bot, Dispatcher
-from aiogram.types import Message
-from aiogram.filters.command import Command
+from aiogram import Bot, Dispatcher
 from asyncio import run 
-
+from src.handlers.message.start import app as start
 
 async def main():
 
@@ -11,6 +9,8 @@ async def main():
 
 
     dp: Dispatcher = Dispatcher()
+
+    dp.include_routers(start)
 
 
     try:
