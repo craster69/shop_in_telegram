@@ -4,7 +4,7 @@ from src.handlers.message.start import app as start
 
 env = Env()
 
-env.read_env("../config.env")
+env.read_env('config.env')
 
 token = env.str('TOKEN')
 

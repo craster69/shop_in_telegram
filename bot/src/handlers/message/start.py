@@ -9,7 +9,7 @@ app = Router()
 
 env = Env()
 
-env.read_env("../config.env")
+env.read_env('config.env')
 
 token = env.str('TOKEN')
 
