@@ -35,7 +35,7 @@ async def user_data(message: Message):
 
         user_name = message.from_user.full_name
 
-        date = message.date.strftime('%d.%m.%Y')
+        date = message.date
 
     data = {
         'file_id' : file_id,
