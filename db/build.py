@@ -2,7 +2,7 @@ from sqlalchemy import Table, Column, Integer, String, MetaData, ForeignKey, cre
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 from environs import Env
-from datetime import datetime
+
 
 env = Env()
 
@@ -24,18 +24,19 @@ class User(Base):
     file_id = Column(String)
     file_path = Column(String)
 
+class Product(Base):
+    __tablename__ = 'basket'
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    user_id = Column(Integer)
+    product_id = Column(Integer)
+    name = Column(String)
+    count = Column(Integer)
+    price = Column(Integer)
+
 engine = create_engine(f'postgresql+psycopg2://{USER_BASE}:{PASSWORD}@{HOST}:{PORT}/{DATA_BASE}')
+
 Session = sessionmaker(bind=engine)
+
 session = Session()
 
 Base.metadata.create_all(engine)
-
-user = User(
-    user_id=12342,
-    user_name='craster',
-    date=datetime.now(),
-    file_id="djfhsdjkfjdshgf",
-    file_path='sdfds'
-)
-session.add(user)
-session.commit()
